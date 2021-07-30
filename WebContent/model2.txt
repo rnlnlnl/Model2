@@ -1,0 +1,60 @@
+model2.txt
+
+ => model2 구조 MVC패턴을 사용하여 개발
+ => 디자인 / 비지니스로직(개발) 구분하기 위해서 생성
+  => 대규모 프로젝트에서 개발하는 속도 및 유지보수를 위해서 사용
+  
+  
+  M (Model) : 자바코드 / pro페이지의 동작 / DB관련 동작
+  V (View) : jsp 코드 / form페이지 동작 / 정보 입력, 정보 출력
+  C (Controller) : Servlet 코드 / Model-View 연결하는 동작
+ 
+  클라이언트 -> 요청 -> web.xml -> (매핑된 서블릿)Controller -> Model -> DB
+                                        |  
+                                       View
+
+ * Model2 실행은 JSP코드 실행 X
+   => index.jsp 실행가능 
+
+ * Model2 구조는 가상 주소를 사용 
+   => 주소줄에 .jsp 있으면 잘못된 접근
+
+ * Model2 방식 (MVC) 페이지 이동
+ 
+ 1. response -> redirect방식
+   response.sendRedirect(주소);
+   
+    페이지 이동시 주소 변화 O , 화면 변화 O
+    => [가상 주소 -> 가상 주소 이동]
+        A.me   -> B.me
+  
+ 2. request -> forward방식
+   RequestDispatcher dis =
+   		request.getRequestDispatcher(주소);
+
+  dis.forward(request,response);
+  
+    페이지 이동시 주소 변화 X , 화면 변화 O
+   
+   => [가상주소 -> 실제 주소 이동]
+       A.me  -> a.jsp
+
+
+ => 쇼핑몰 기능 추가
+ 상품 등록(판매자) -> 목록확인 -> 사용자 구매 -> 배송
+ 
+ * 동작마다 고유의 가상 주소를 사용
+ ex) 회원 정보 - .me
+ 관리자 상품 등록 - .ag
+
+
+
+
+
+
+
+
+
+
+
+
