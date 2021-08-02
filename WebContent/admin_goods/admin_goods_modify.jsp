@@ -25,7 +25,7 @@
 				<td>카테고리</td>
 				<td>
 					<select name="category">
-						<!-- JSTL은  <c:if>문으로 만들어준다 -->
+						<!-- JSTL은  c:if문으로 만들어준다 -->
 						<option value="outwear" 
 							<%if(gdto.getCategory().equals("outwear")){ %>
 								selected

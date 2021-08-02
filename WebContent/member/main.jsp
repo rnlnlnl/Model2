@@ -34,14 +34,29 @@
 	
 	<a href="./MemberDeleteAction.me">회원 정보 삭제(delete)</a><br>
 	
+	<hr>
+	<h3> 쇼핑몰 </h3>
+	
+	<a href="./GoodsList.go"> 쇼핑몰 목록 </a>
+	
+	
+	
 	<!-- admin(관리자) 메뉴 -->
+	
 	<%
 //	  if(id != null){
 //		if(id.equals("admin")){ 
 		// 데이터 값 비교시 null인지 체크후 비교 !!
 		if(id != null && id.equals("admin")){
 	%>
-	<a href="./MemberListAction.me">회원 정보 목록(List)</a><br>
+			<hr>
+			<h3>관리자 기능</h3>
+			
+			<a href="./MemberListAction.me">회원 정보 목록(List)</a><br>
+			
+			<a href="./GoodsAdd.ag">관리자 상품 등록</a><br>
+			
+			<a href="./AdminGoodsList.ag">관리자 상품 리스트</a><br>
 	<%
 		}
 //	  }

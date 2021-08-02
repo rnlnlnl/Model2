@@ -33,6 +33,19 @@
   
   <!-- 쇼핑몰 - 관리자상품등록 -->
   
+  <!-- 쇼핑몰 - 일반 사용자 -->
+  <servlet>
+  	<servlet-name>GoodsFrontController</servlet-name>
+  	<servlet-class>com.itwillbs.goods.action.GoodsFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GoodsFrontController</servlet-name>
+  	<url-pattern>*.go</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 쇼핑몰 - 일반 사용자 -->
+  
   <error-page>
   	<error-code>404</error-code>
   	<location>/error/error404.jsp</location>
