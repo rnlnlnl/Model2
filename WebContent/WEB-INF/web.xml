@@ -46,6 +46,19 @@
   
   <!-- 쇼핑몰 - 일반 사용자 -->
   
+  <!-- 쇼핑몰 - 장바구니 -->
+  <servlet>
+  	<servlet-name>BasketFrontController</servlet-name>
+  	<servlet-class>com.itwillbs.basket.action.BasketFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>BasketFrontController</servlet-name>
+  	<url-pattern>*.ba</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 쇼핑몰 - 장바구니 -->
+  
   <error-page>
   	<error-code>404</error-code>
   	<location>/error/error404.jsp</location>
