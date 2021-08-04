@@ -15,7 +15,7 @@
 		// 회원 가입 페이지 호출
 		// http://localhost:8088/Model2JSP/MemberJoin.me
 		//response.sendRedirect("./MemberJoin.me");
-		response.sendRedirect("./MemberLogin.me");
+		//response.sendRedirect("./MemberLogin.me");
 		
 		// 관리자 상품등록 페이지
 		//response.sendRedirect("./GoodsAdd.ag");
@@ -26,6 +26,8 @@
 		// 일반 사용자 상품 목록 페이지
 		//response.sendRedirect("./GoodsList.go");
 		
+		// 메인페이지
+		response.sendRedirect("./Main.me");
 		
 	%>
 	

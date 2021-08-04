@@ -37,9 +37,10 @@
 	<hr>
 	<h3> 쇼핑몰 </h3>
 	
-	<a href="./GoodsList.go"> 쇼핑몰 목록 </a>
+	<a href="./GoodsList.go"> 쇼핑몰 목록 </a> <br>
 	
-	
+	<a href="./BasketList.ba"> 쇼핑몰 장바구니 목록 </a> <br>
+		
 	
 	<!-- admin(관리자) 메뉴 -->
 	
