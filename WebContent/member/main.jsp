@@ -40,6 +40,8 @@
 	<a href="./GoodsList.go"> 쇼핑몰 목록 </a> <br>
 	
 	<a href="./BasketList.ba"> 쇼핑몰 장바구니 목록 </a> <br>
+	
+	<a href="./OrderStart.or"> 쇼핑몰 주문 상세 페이지 </a> <br>
 		
 	
 	<!-- admin(관리자) 메뉴 -->

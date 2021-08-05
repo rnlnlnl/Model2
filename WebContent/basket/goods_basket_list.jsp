@@ -59,5 +59,8 @@
 		<%} %>
 	</table>
 	
+	<h3><a href="./OrderStart.or">[구매하기]</a></h3>
+	<h3><a href="./GoodsList.go">[계속 쇼핑하기]</a></h3>
+	
 </body>
 </html>
