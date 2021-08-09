@@ -11,6 +11,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.itwillbs.basket.db.BasketDTO;
+
 public class GoodsDAO {
 	
 	// 공통의 멤버변수(전역변수,인스턴스변수)
@@ -200,6 +202,40 @@ public class GoodsDAO {
 			return gdto;
 		}
 		// getGoods(num)
+		
+		// updateAmount(basketList)
+		public void updateAmount(List basketList){
+			// 판매된 상품들의 수량을 제거
+			
+			try {
+				// 1.2. DB연결
+				conn = getCon();
+				
+				for(int i =0;i<basketList.size();i++){
+					BasketDTO bkdto = (BasketDTO)basketList.get(i);
+					// 3. sql 구문(기존의 수량 - 판매수량) & pst 객체
+					sql = "update itwill_goods set amount = amount - ? where num = ?";
+					
+					pst = conn.prepareStatement(sql);
+					
+					// ?
+					pst.setInt(1, bkdto.getB_g_amount());
+					pst.setInt(2, bkdto.getB_g_num());
+					
+					// 4. 실행
+					pst.executeUpdate();
+					
+				}// for
+				
+				System.out.println(" DAO : 구매후 상품 수량 변경완료!");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+		}
+		// updateAmount(basketList)
 		
 		
 }

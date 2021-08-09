@@ -244,4 +244,30 @@ public class BasketDAO {
 	}
 	// basketDelete(b_num)
 	
+	// deleteBasket(id)
+	public void deleteBasket(String id){
+		
+		try {
+			// 1.2. DB 연결
+			conn = getCon();
+			
+			// 3. sql 구문
+			sql = "delete from itwill_basket where b_m_id = ?";
+			// 4. 실행
+			pst = conn.prepareStatement(sql);
+			
+			pst.setString(1, id);
+			
+			pst.executeUpdate();
+			
+			System.out.println(" DAO : 구매후 장바구니 비우기!!");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+	}
+	// deleteBasket(id)
+	
 }

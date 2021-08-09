@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.itwillbs.basket.db.BasketDAO;
 import com.itwillbs.basket.db.BasketDTO;
+import com.itwillbs.goods.db.GoodsDAO;
 import com.itwillbs.goods.db.GoodsDTO;
 import com.itwillbs.order.db.OrderDAO;
 import com.itwillbs.order.db.OrderDTO;
@@ -69,10 +70,34 @@ public class OrderAddAction implements Action {
 		
 		
 		// OrderDAO 객체 생성
+		// addOrder(ordto,basketList,goodsList);
 		OrderDAO odao = new OrderDAO();
+		odao.addOrder(ordto,basketList,goodsList);
 		
+		// 메일, 문자, 메세지 전달 - 호출(멀티 쓰레딩)
+		// 멀티 테스킹 -> 멀티 쓰레딩을 해야 메일 보내기를 해야 빨라진다
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				for(long i=0;i<10000000000L; i++);
+				System.out.println(" M : 메일보내기!!! ");
+				
+			}
+		}).start();
+		System.out.println(" M : 주문저장 완료! ");
 		
-		return null;
+		// 상품 구매 수량 제거( update )
+		// 상품정보를 처리하는 객체 GoodsDAO 객체 생성
+		GoodsDAO gdao = new GoodsDAO();
+		gdao.updateAmount(basketList);
+		
+		// 장바구니 정보 삭제  - 특정 사용자의 정보를 삭제 (id) ( delete )
+		bkdao.deleteBasket(id);
+		
+		// 페이지 이동 (./OrderList.or)
+		forward.setPath("./OrderList.or");
+		forward.setRedirect(true);
+		return forward;
 	}
 
 }
