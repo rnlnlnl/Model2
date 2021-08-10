@@ -1,4 +1,4 @@
-package com.itwillbs.order.action;
+package com.itwillbs.admin.order.action;
 
 import java.io.IOException;
 
@@ -9,17 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// @WebServlet("*.or")
-// web.xml 파일에서 서블릿 매핑을 대신처리하는 작업
-
-
-@WebServlet("*.or")
-public class OrderFrontController extends HttpServlet {
+@WebServlet("*.ao")
+public class AdminOrderFrontController extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("OrderFrontController_doPOST()");
+		System.out.println("AdminOrderFrontController_doPOST()");
 		
 		////////////////////////1. 가상주소를 계산///////////////////////////////////////////////
 		System.out.println("");
@@ -41,25 +37,12 @@ public class OrderFrontController extends HttpServlet {
 		System.out.println("");
 		System.out.println(" C : 가상주소 매핑 시작");
 		// 2단계 매핑이 안되면 주소로 못들어온다는 뜻이다
-		if(command.equals("/OrderStart.or")){
-			System.out.println(" C : /OrderStart.ba 호출!");
-			System.out.println(" C : DB정보를 화면에 보여주기 (주문창)");
+		if (command.equals("/AdminOrderList.ao")) {
+			System.out.println(" C : /AdminOrderList.ao 호출!");
+			System.out.println(" C : DB정보를 조회 해서 view 출력");
 			
-			// OrderStartAction() 객체 생성
-			action = new OrderStartAction();
-			
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		}else if(command.equals("/OrderAddAction.or")){
-			System.out.println(" C : /OrderAddAction.ba 호출!");
-			System.out.println(" C : 전달된 정보를 DB에 저장 후 이동");
-			
-			// OrderAddAction() 객체 생성
-			action = new OrderAddAction();
+			// AdminOrderListAction() 객체 생성
+			action = new AdminOrderListAction();
 			
 			try {
 				forward = action.execute(request, response);
@@ -67,25 +50,12 @@ public class OrderFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		}else if(command.equals("/OrderList.or")){
-			System.out.println(" C : /OrderList.or 호출!");
-			System.out.println(" C : DB에서 정보를 가져와 View에 출력");
+		}else if(command.equals("/AdminOrderDetail.ao")){
+			System.out.println(" C : /AdminOrderDetail.ao 호출!");
+			System.out.println(" C : DB정보를 조회 해서 view 출력");
 			
-			// OrderListAction() 객체 생성
-			action = new OrderListAction();
-			
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		}else if(command.equals("/OrderDetail.or")){
-			System.out.println(" C : /OrderDetail.or 호출!");
-			System.out.println(" C : DB에서 가져온 주문정보를 View에 출력");
-			
-			//OrderDetailAction() 객체 생성
-			action = new OrderDetailAction();
+			// AdminOrderDetailAction() 객체 생성
+			action = new AdminOrderDetailAction();
 			
 			try {
 				forward = action.execute(request, response);
@@ -119,17 +89,16 @@ public class OrderFrontController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("OrderFrontController_doGET()");
+		System.out.println("AdminOrderFrontController_doGET()");
 		doProcess(request,response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("OrderFrontController_doPOST()");
+		System.out.println("AdminOrderFrontController_doPOST()");
 		doProcess(request,response);
 	}
-	
 	
 	
 	

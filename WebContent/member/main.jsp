@@ -42,7 +42,8 @@
 	<a href="./BasketList.ba"> 쇼핑몰 장바구니 목록 </a> <br>
 	
 	<a href="./OrderStart.or"> 쇼핑몰 주문 상세 페이지 </a> <br>
-		
+	
+	<a href="OrderList.or"> 쇼핑몰 결제 내역상세 페이지 </a> <br>
 	
 	<!-- admin(관리자) 메뉴 -->
 	
@@ -60,6 +61,9 @@
 			<a href="./GoodsAdd.ag">관리자 상품 등록</a><br>
 			
 			<a href="./AdminGoodsList.ag">관리자 상품 리스트</a><br>
+			
+			<a href="./AdminOrderList.ao">관리자 주문 리스트</a><br>
+			
 	<%
 		}
 //	  }

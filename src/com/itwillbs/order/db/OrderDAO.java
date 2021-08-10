@@ -151,19 +151,72 @@ public class OrderDAO {
 			// 5. 데이터 처리
 			while(rs.next()) {
 				OrderDTO ordto = new OrderDTO();
+				ordto.setO_date(rs.getDate("o_date"));
+				ordto.setO_g_amount(rs.getInt("o_g_amount"));
+				ordto.setO_g_color(rs.getString("o_g_color"));
+				ordto.setO_g_name(rs.getString("o_g_name"));
+				ordto.setO_g_size(rs.getString("o_g_size"));
+				ordto.setO_trade_num(rs.getString("o_trade_num"));
+				ordto.setO_trans_num(rs.getString("o_trans_num"));
+				ordto.setO_sum_money(rs.getInt("o_sum_money"));
+				ordto.setO_status(rs.getInt("o_status"));
+				ordto.setO_trade_type(rs.getString("o_trade_type"));
 				
+				orderList.add(ordto);
+			}// while
+			
+			System.out.println(" DAO : 주문 목록 정보(개인)를 저장 완료!");
+			System.out.println(orderList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		return orderList;
+	}
+	// getOrderList(id)
+	
+	// getOrderList(trade_num)
+	public List getOrderDetailList(String trade_num){
+		List detailList = new ArrayList();
+		try {
+			// 1.2. DB연결
+			conn = getCon();
+			
+			// 3. sql 작성& pst 객체
+			sql = "select * from itwill_order where o_trade_num = ?";
+			
+			pst = conn.prepareStatement(sql);
+			
+			pst.setString(1, trade_num);
+			// 4. sql 실행
+			rs = pst.executeQuery();
+			// 5. 데이터 처리
+			while(rs.next()) {
+				OrderDTO ordto = new OrderDTO();
+				ordto.setO_date(rs.getDate("o_date"));
+				ordto.setO_g_amount(rs.getInt("o_g_amount"));
+				ordto.setO_g_color(rs.getString("o_g_color"));
+				ordto.setO_g_name(rs.getString("o_g_name"));
+				ordto.setO_g_size(rs.getString("o_g_size"));
+				ordto.setO_trade_num(rs.getString("o_trade_num"));
+				ordto.setO_trans_num(rs.getString("o_trans_num"));
+				ordto.setO_sum_money(rs.getInt("o_sum_money"));
+				ordto.setO_status(rs.getInt("o_status"));
+				ordto.setO_trade_type(rs.getString("o_trade_type"));
 				
-			}
+				detailList.add(ordto);
+			}// while
+			
+			System.out.println(" DAO : 상세 주문 리스트를 저장 완료!");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			closeDB();
 		}
-		return null;
+		return detailList;
 	}
-	// getOrderList(id)
-	
-	
+	// getOrderList(trade_num)
 	
 }
